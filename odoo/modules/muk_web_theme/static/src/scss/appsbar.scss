@@ -25,7 +25,9 @@
 	position: fixed; 
     overflow-y: auto;	
     top: $o-navbar-height;
-    background-color: $mk-appbar-background;
+    //background-color: $mk-appbar-background;
+		//background: #f0eeee;
+	background-color: #264e79;
     .mk_apps_sidebar {
 	    padding: 0;
 	    white-space: nowrap;

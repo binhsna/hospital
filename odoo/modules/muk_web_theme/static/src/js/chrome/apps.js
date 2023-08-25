@@ -52,7 +52,7 @@ AppsMenu.include(_.extend({}, MenuSearchMixin, {
         this._search_def = $.Deferred();
     },
     start: function () {
-        this._setBackgroundImage();
+        // this._setBackgroundImage();
         this.$search_container = this.$(".mk_search_container");
         this.$search_input = this.$(".mk_search_input input");
         this.$search_results = this.$(".mk_search_results");

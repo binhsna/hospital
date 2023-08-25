@@ -191,7 +191,7 @@
     <menuitem id="hospital_root"
               name="Hospital"
               sequence="0"
-              web_icon="hospital.static/description/icon.png"
+               web_icon="hospital,static/description/icon.png"
     />
     <menuitem id="hospital_patient"
               name="Patients"

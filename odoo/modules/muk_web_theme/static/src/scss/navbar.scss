@@ -19,7 +19,40 @@
 *    along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 **********************************************************************************/
-
+//
+.o_main_navbar {
+	background: #3b73af;
+	border-bottom: none;
+	.show .dropdown-toggle {
+        background-color: #264e79;
+    }
+	> a, > button {
+        &:hover, &:focus {
+            background-color: #264e79;
+        }
+    }
+	> ul {
+		> li {
+			> a, > label {
+				&:hover {
+					background-color: #264e79;
+				}
+			}
+			&.o_extra_menu_items {
+				&.show > ul {
+					> li {
+						> a {
+							&.dropdown-toggle {
+								background-color: #264e79;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+//
 @include media-breakpoint-down(sm) {
     .o_main_navbar {
 		display: flex;

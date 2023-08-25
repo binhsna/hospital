@@ -66,11 +66,10 @@ class ResUsers(models.Model):
     #----------------------------------------------------------
 
     def __init__(self, pool, cr):
-        init_res = super(ResUsers, self).__init__(pool, cr)
+        super(ResUsers, self).__init__(pool, cr)
         type(self).SELF_WRITEABLE_FIELDS = list(self.SELF_WRITEABLE_FIELDS)
         type(self).SELF_WRITEABLE_FIELDS.extend(['sidebar_type'])
         type(self).SELF_WRITEABLE_FIELDS.extend(['chatter_position'])
         type(self).SELF_READABLE_FIELDS = list(self.SELF_READABLE_FIELDS)
         type(self).SELF_READABLE_FIELDS.extend(['sidebar_type'])
         type(self).SELF_READABLE_FIELDS.extend(['chatter_position'])
-        return init_res

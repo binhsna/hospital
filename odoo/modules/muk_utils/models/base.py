@@ -22,7 +22,7 @@
 
 import logging
 
-from odoo import api, models, fields
+from odoo import api, models, fields, _
 from odoo.osv import expression
 
 from odoo.addons.muk_utils.tools import utils
@@ -40,7 +40,7 @@ class Base(models.AbstractModel):
     @api.model
     def _check_parent_field(self):
         if self._parent_name not in self._fields:
-            raise TypeError("The parent (%s) field does not exist." % self._parent_name)
+            raise TypeError(_("The parent (%s) field does not exist.") % self._parent_name)
     
     @api.model
     def _build_search_childs_domain(self, parent_id, domain=[]):
