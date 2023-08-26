@@ -32,7 +32,7 @@
     </record>
 
     <record id="action_lab" model="ir.actions.act_window">
-        <field name="name">Lab</field>
+        <field name="name">Labs</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.lab</field>
         <field name="view_type">form</field>
@@ -45,7 +45,7 @@
         </field>
     </record>
 
-    <menuitem id="hospital_lab" name="Lab" parent="hospital_root"
+    <menuitem id="hospital_lab" name="Labs" parent="hospital_root"
               action="action_lab" sequence="6"/>
 
 </odoo>

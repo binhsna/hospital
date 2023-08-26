@@ -1,5 +1,6 @@
 from odoo import api, models, fields, _
 from odoo.exceptions import ValidationError
+import re
 
 
 class SaleOrderInherit(models.Model):
@@ -64,6 +65,22 @@ class HospitalPatient(models.Model):
         for rec in self:
             if rec.patient_age <= 5:
                 raise ValidationError(_("The Age Must be Greater than 5"))
+
+    @api.constrains('email_id')
+    def _check_email_format(self):
+        for record in self:
+            if record.email_id:
+                pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+                if not re.match(pattern, record.email_id):
+                    raise models.ValidationError("Địa chỉ email không hợp lệ! Vui lòng kiểm tra lại.")
+
+    @api.constrains('phone')
+    def is_valid_phone_number(self):
+        for record in self:
+            if record.phone:
+                pattern = r'^\d{10}$'  # Mẫu chỉ chấp nhận 10 chữ số
+                if not re.match(pattern, record.phone):
+                    raise models.ValidationError("Số điện thoại không hợp lệ! Vui lòng kiểm tra lại.")
 
     # Test Create Scheduled Actions
     @api.model
@@ -140,7 +157,7 @@ class HospitalPatient(models.Model):
         for rec in self:
             rec.patient_name = rec.patient_name_upper.lower() if rec.patient_name_upper else False
 
-    name = fields.Char(string="Contact Number")
+    phone = fields.Char(string="Phone")
     name_seq = fields.Char(string='Patient ID', required=True, copy=False, readonly=True,
                            index=True, default=lambda self: _('New'))
     gender = fields.Selection([
@@ -153,7 +170,7 @@ class HospitalPatient(models.Model):
     ], string='Age Group', compute='set_age_group', store=True)
     patient_name = fields.Char(string="Name", required=True, track_visibility='always')
     patient_age = fields.Integer('Age', track_visibility="always", group_operator=False)
-    patient_age2 = fields.Float(string="Age2")
+    # patient_age2 = fields.Float(string="Age2")
     notes = fields.Text(string="Registration Notes", translate=True)
     image = fields.Binary(string="Image", attachment=True)
     appointment_count = fields.Integer(string="Appointment", compute='get_appointment_count')
@@ -173,5 +190,5 @@ class HospitalPatient(models.Model):
         if vals.get('name_seq', _('New')) == _('New'):
             vals['name_seq'] = self.env['ir.sequence'].next_by_code('hospital.patient.sequence') or _('New')
 
-        result = super(HospitalPatient, self).create(vals)
+            result = super(HospitalPatient, self).create(vals)
         return result

@@ -2,13 +2,13 @@
 {
     'name': 'Hospital Management',
     'version': '12.0.1.0.0',
-    'category': 'Extra Tools',
+    'category': 'Learning odoo',
     'summary': 'Module for managing the Hospitals',
     'sequence': 1,
     'description': """App quản lý bệnh viên""",
     'author': 'Binh Nguyen Cong',
     'website': 'https://www.odoo.com/page/hospital-patient',
-    'depends': ['mail', 'sale', 'report_xlsx', 'board', 'web_timeline', 'web_notify', 'website'],
+    'depends': ['mail', 'sale', 'report_xlsx', 'board', 'web_timeline', 'web_notify', 'website', 'point_of_sale'],
     'data': [
         # 'security/security.xml',
         'security/ir.model.access.csv',
@@ -32,6 +32,7 @@
         'views/server_action.xml',
         'data/mail_template.xml',
         'views/website_form.xml',
+        'views/pos_sale.xml',
     ],
     'demo': [],
     'images': ['static/description/icon.png'],

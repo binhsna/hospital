@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-        <template id="products" name="Products">
-            <t t-call="website.layout">
-                Patients
-                <t t-foreach="patients" t-as="pat">
-                    <t t-esc="pat.patient_name"/>
-                </t>
+    <template id="products" name="Products">
+        <t t-call="website.layout">
+            Patients
+            <t t-foreach="patients" t-as="pat">
+                <t t-esc="pat.patient_name"/>
             </t>
-        </template>
+        </t>
+    </template>
 
     <!--tree view of the doctor model-->
     <record id="doctor_tree" model="ir.ui.view">
@@ -47,7 +47,7 @@
 
     <!--action of the doctor menu-->
     <record id="action_doctor" model="ir.actions.act_window">
-        <field name="name">Doctor</field>
+        <field name="name">Doctors</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.doctor</field>
         <field name="view_type">form</field>
@@ -62,7 +62,7 @@
 
     <!--menu for the doctor-->
     <menuitem id="hospital_doctor"
-              name="Doctor"
+              name="Doctors"
               parent="hospital_root"
               action="action_doctor"
               sequence="5"/>
